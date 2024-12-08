@@ -2,6 +2,7 @@ package com.example.springbootrestapikt.controllers
 
 import com.example.springbootrestapikt.pojo.Student
 import com.example.springbootrestapikt.repo.StudentsRepo
+import com.example.springbootrestapikt.util.Routes
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -17,29 +18,15 @@ class StudentResource {
     @Autowired
     val studentsRepo = StudentsRepo()
 
-
-    @GetMapping("getallstudents")
-    fun getAllStudents(): List<Student>{
-
-        return studentsRepo.retrieveAllStudents()
-    }
-
-    @PostMapping("/createStudent")
+    @PostMapping(Routes.create)
     fun createNewStudent(@RequestBody student:Student): List<Student>{
 
         return studentsRepo.addStudent(student)
     }
 
-    @GetMapping("/findstudent/{name}")
+    @PutMapping("${Routes.find}/{Id}")
     fun retrieveStudentByName(@PathVariable name:String): Student?{
 
         return studentsRepo.getStudentWithName(name)
     }
-
-    @DeleteMapping("/deletestudent/{name}")
-    fun deleteStudent(@PathVariable name:String): List<Student>{
-
-        return studentsRepo.deleteByName(name)
-    }
-
 }
