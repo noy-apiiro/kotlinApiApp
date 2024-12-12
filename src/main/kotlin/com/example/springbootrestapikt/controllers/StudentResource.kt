@@ -30,7 +30,7 @@ class StudentResource {
         return studentsRepo.addStudent(student)
     }
 
-    @PutMapping("${Routes.find}/{Id}")
+    @GetMapping("${Routes.find}/{name}")
     fun retrieveStudentByName(@PathVariable name:String): Student?{
 
         return studentsRepo.getStudentWithName(name)
