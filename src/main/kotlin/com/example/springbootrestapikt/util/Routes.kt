@@ -5,4 +5,5 @@ object Routes {
     const val login = "$v1/login"
     const val find = "$login/find/"
     const val create = "$login/create"
+    const val update = "$login/update"
 }

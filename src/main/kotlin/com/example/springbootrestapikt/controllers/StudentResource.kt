@@ -24,6 +24,12 @@ class StudentResource {
         return studentsRepo.addStudent(student)
     }
 
+    @PostMapping(Routes.update)
+    fun updateNewStudent(@RequestBody student:Student): List<Student>{
+
+        return studentsRepo.addStudent(student)
+    }
+
     @PutMapping("${Routes.find}/{Id}")
     fun retrieveStudentByName(@PathVariable name:String): Student?{
 
